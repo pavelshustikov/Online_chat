@@ -18,9 +18,7 @@ public class Client {
     public static void main(String[] args) {
         try {
             int portNumber = readPortNumber();
-
             InetSocketAddress socketAddress = new InetSocketAddress(hostname, portNumber);
-
             SocketChannel socketChannel = SocketChannel.open();
 
             try (socketChannel; Scanner scanner = new Scanner(System.in)) {
@@ -60,7 +58,7 @@ public class Client {
         }
     }
 
-    public static int readPortNumber() {
+    private static int readPortNumber() {
         String portNumber = null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(nameSettings))) {
