@@ -72,7 +72,7 @@ public class Client {
         return Integer.parseInt(portNumber);
     }
 
-    public static String getClientName() {
+    private static String getClientName() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Добро пожаловать! Введите ваше имя: ");
         return scanner.nextLine();
