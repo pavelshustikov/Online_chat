@@ -12,12 +12,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Server {
-    static final Date data = new Date();
-    static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
-    final static int portNumber = 55555;
-    final static String nameSettings = "settings.txt";
-    final static String nameLog = "file.log";
-    final static String hostname = "127.0.0.1";
+    protected static final Date data = new Date();
+    protected static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yyyy");
+    protected final static int portNumber = 55555;
+    protected final static String nameSettings = "settings.txt";
+    protected final static String nameLog = "file.log";
+    protected final static String hostname = "127.0.0.1";
 
     public static void main(String[] args) {
         try {
@@ -76,19 +76,16 @@ public class Server {
 
 class ClientWorker implements Runnable {
     ServerSocketChannel serverChannel;
-    //List<SocketChannel> socketChannels = new ArrayList<>();
 
     public ClientWorker(ServerSocketChannel serverChannel){
         this.serverChannel = serverChannel;
     }
-
 
     @Override
     public void run() throws NullPointerException{
         while (true){
             try (SocketChannel socketChannel = serverChannel.accept()) {
                 final ByteBuffer inputBuffer = ByteBuffer.allocate(2048);
-                //socketChannels.add(socketChannel);
 
                 while (socketChannel.isConnected()) {
                     int bytesCount = socketChannel.read(inputBuffer);
